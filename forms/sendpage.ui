@@ -50,7 +50,7 @@
           <item>
            <widget class="QLabel" name="label_2">
             <property name="toolTip">
-             <string>To set (in msat) only if not already set in the invoice</string>
+             <string>To set (in mgro) only if not already set in the invoice</string>
             </property>
             <property name="text">
              <string>Value (optional) :</string>

@@ -67,7 +67,7 @@
             <string>Your current on channels balance</string>
            </property>
            <property name="text">
-            <string notr="true">MSAT</string>
+            <string notr="true">MGRO</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

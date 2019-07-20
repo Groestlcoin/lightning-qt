@@ -170,7 +170,7 @@ class Ui_SendPage(object):
         SendPage.setWindowTitle(_translate("SendPage", "Form"))
         self.label.setToolTip(_translate("SendPage", "In order to pay, you need to specify a bolt11 encoded invoice."))
         self.label.setText(_translate("SendPage", "Invoice :"))
-        self.label_2.setToolTip(_translate("SendPage", "To set (in msat) only if not already set in the invoice"))
+        self.label_2.setToolTip(_translate("SendPage", "To set (in mgro) only if not already set in the invoice"))
         self.label_2.setText(_translate("SendPage", "Value (optional) :"))
         self.buttonDecode.setToolTip(_translate("SendPage", "Decode the invoice in order to pay it afterwards."))
         self.buttonDecode.setText(_translate("SendPage", "Decode invoice"))
@@ -183,5 +183,3 @@ class Ui_SendPage(object):
         self.label_6.setToolTip(_translate("SendPage", "Public key of the payee node"))
         self.label_6.setText(_translate("SendPage", "Payee id :"))
         self.buttonPay.setText(_translate("SendPage", "Pay"))
-
-

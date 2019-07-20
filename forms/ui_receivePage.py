@@ -38,7 +38,7 @@ class Ui_ReceivePage(object):
         font.setWeight(75)
         self.labelUnit.setFont(font)
         self.labelUnit.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.labelUnit.setText("MSAT")
+        self.labelUnit.setText("MGRO")
         self.labelUnit.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelUnit.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.labelUnit.setObjectName("labelUnit")
@@ -152,5 +152,3 @@ class Ui_ReceivePage(object):
         self.buttonClear.setText(_translate("ReceivePage", "Clear"))
         self.lineLabel.setToolTip(_translate("ReceivePage", "A unique string or number (never revealed to other nodes on the lightning network), used to query the status of this invoice."))
         self.label_7.setText(_translate("ReceivePage", "Invoice :"))
-
-

@@ -59,7 +59,7 @@ if sys.stdin.isatty():
     elif len(sys.argv) == 3:
         plugin.rpc = HackedLightningRpc(sys.argv[2])
     else:
-        print("lightning-qt, bitcoin-qt for lightningd")
+        print("lightning-qt, groestlcoin-qt for lightningd")
         print("usage :")
         # Actually we don't mind the argument's name
         print("    python3 guy.py --socket-path /path/to/lightning-rpc/socket")

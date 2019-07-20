@@ -261,7 +261,7 @@
                </font>
               </property>
               <property name="text">
-               <string>MSAT</string>
+               <string>MGRO</string>
               </property>
              </widget>
             </item>
@@ -409,7 +409,7 @@
               <item>
                <widget class="QLabel" name="label_10">
                 <property name="text">
-                 <string>Incoming (msat)</string>
+                 <string>Incoming (mgro)</string>
                 </property>
                </widget>
               </item>
@@ -427,7 +427,7 @@
               <item>
                <widget class="QLabel" name="label_8">
                 <property name="text">
-                 <string>Amount (msat)</string>
+                 <string>Amount (mgro)</string>
                 </property>
                </widget>
               </item>

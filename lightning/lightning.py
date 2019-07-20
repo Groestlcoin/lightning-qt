@@ -19,58 +19,58 @@ class RpcError(ValueError):
 
 class Millisatoshi:
     """
-    A subtype to represent thousandths of a satoshi.
+    A subtype to represent thousandths of a gro.
 
-    Many JSON API fields are expressed in millisatoshis: these automatically get
-    turned into Millisatoshi types.  Converts to and from int.
+    Many JSON API fields are expressed in milligros: these automatically get
+    turned into Milligro types.  Converts to and from int.
     """
     def __init__(self, v):
         """
-        Takes either a string ending in 'msat', 'sat', 'btc' or an integer.
+        Takes either a string ending in 'mgro', 'gro', 'grs' or an integer.
         """
         if isinstance(v, str):
             if v.endswith("msat"):
                 self.millisatoshis = int(v[0:-4])
             elif v.endswith("sat"):
                 self.millisatoshis = Decimal(v[0:-3]) * 1000
-            elif v.endswith("btc"):
+            elif v.endswith("grs"):
                 self.millisatoshis = Decimal(v[0:-3]) * 1000 * 10**8
             else:
-                raise TypeError("Millisatoshi must be string with msat/sat/btc suffix or int")
+                raise TypeError("Milligro must be string with mgro/gro/grs suffix or int")
             if self.millisatoshis != int(self.millisatoshis):
-                raise ValueError("Millisatoshi must be a whole number")
+                raise ValueError("Milligro must be a whole number")
             self.millisatoshis = int(self.millisatoshis)
         elif isinstance(v, Millisatoshi):
             self.millisatoshis = v.millisatoshis
         elif int(v) == v:
             self.millisatoshis = int(v)
         else:
-            raise TypeError("Millisatoshi must be string with msat/sat/btc suffix or int")
+            raise TypeError("Milligro must be string with mgro/gro/grs suffix or int")
 
         if self.millisatoshis < 0:
-            raise ValueError("Millisatoshi must be >= 0")
+            raise ValueError("Milligro must be >= 0")
 
     def __repr__(self):
         """
-        Appends the 'msat' as expected for this type.
+        Appends the 'mgro' as expected for this type.
         """
-        return str(self.millisatoshis) + "msat"
+        return str(self.millisatoshis) + "mgro"
 
     def to_satoshi(self):
         """
-        Return a Decimal representing the number of satoshis
+        Return a Decimal representing the number of gros
         """
         return Decimal(self.millisatoshis) / 1000
 
     def to_btc(self):
         """
-        Return a Decimal representing the number of bitcoin
+        Return a Decimal representing the number of groestlcoin
         """
         return Decimal(self.millisatoshis) / 1000 / 10**8
 
     def to_satoshi_str(self):
         """
-        Return a string of form 1234sat or 1234.567sat.
+        Return a string of form 1234gro or 1234.567gro.
         """
         if self.millisatoshis % 1000:
             return '{:.3f}sat'.format(self.to_satoshi())
@@ -79,7 +79,7 @@ class Millisatoshi:
 
     def to_btc_str(self):
         """
-        Return a string of form 12.34567890btc or 12.34567890123btc.
+        Return a string of form 12.34567890grs or 12.34567890123grs.
         """
         if self.millisatoshis % 1000:
             return '{:.11f}btc'.format(self.to_btc())
@@ -102,7 +102,7 @@ class Millisatoshi:
             amount_rounded = round_to_n(self.millisatoshis, digits)
             # try different units and take shortest resulting normalized string
             amounts_str = [
-                "%gbtc" % (amount_rounded / 1000 / 10**8),
+                "%ggrs" % (amount_rounded / 1000 / 10**8),
                 "%gsat" % (amount_rounded / 1000),
                 "%gmsat" % (amount_rounded),
             ]
@@ -446,7 +446,7 @@ class LightningRpc(UnixDomainSocketRpc):
 
     def dev_rescan_outputs(self):
         """
-        Synchronize the state of our funds with bitcoind
+        Synchronize the state of our funds with groestlcoind
         """
         return self.call("dev-rescan-outputs")
 
@@ -758,7 +758,7 @@ class LightningRpc(UnixDomainSocketRpc):
     def withdraw(self, destination, satoshi, feerate=None, minconf=None):
         """
         Send to {destination} address {satoshi} (or "all")
-        amount via Bitcoin transaction. Only select outputs
+        amount via Groestlcoin transaction. Only select outputs
         with {minconf} confirmations
         """
         payload = {
@@ -771,8 +771,8 @@ class LightningRpc(UnixDomainSocketRpc):
 
     def txprepare(self, destination, satoshi, feerate=None, minconf=None):
         """
-        Prepare a bitcoin transaction which sends to {destination} address
-        {satoshi} (or "all") amount via Bitcoin transaction. Only select outputs
+        Prepare a groestlcoin transaction which sends to {destination} address
+        {satoshi} (or "all") amount via Groestlcoin transaction. Only select outputs
         with {minconf} confirmations.
 
         Outputs will be reserved until you call txdiscard or txsend, or
@@ -788,7 +788,7 @@ class LightningRpc(UnixDomainSocketRpc):
 
     def txdiscard(self, txid):
         """
-        Cancel a bitcoin transaction returned from txprepare.  The outputs
+        Cancel a groestlcoin transaction returned from txprepare.  The outputs
         it was spending are released for other use.
         """
         payload = {
@@ -798,7 +798,7 @@ class LightningRpc(UnixDomainSocketRpc):
 
     def txsend(self, txid):
         """
-        Sign and broadcast a bitcoin transaction returned from txprepare.
+        Sign and broadcast a groestlcoin transaction returned from txprepare.
         """
         payload = {
             "txid": txid

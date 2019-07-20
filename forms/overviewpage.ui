@@ -110,7 +110,7 @@
                <string>Your total not yet locked on channels balance</string>
               </property>
               <property name="text">
-               <string notr="true">0 MSAT</string>
+               <string notr="true">0 MGRO</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -160,7 +160,7 @@
                <string>Your current on channels balance</string>
               </property>
               <property name="text">
-               <string notr="true">0 MSAT</string>
+               <string notr="true">0 MGRO</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -180,7 +180,7 @@
             <item row="0" column="1">
              <widget class="QLabel" name="labelBitcoin">
               <property name="text">
-               <string>Bitcoin:</string>
+               <string>Groestlcoin:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -285,7 +285,7 @@
                <string>Your total on channels balance</string>
               </property>
               <property name="text">
-               <string notr="true">0 MSAT</string>
+               <string notr="true">0 MGRO</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
