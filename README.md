@@ -8,14 +8,34 @@ lightning-qt is a Python plugin for [C-lightning](https://github.com/groestlcoin
 Currently lightning does not have a GUI, and I think that having one which looks like groestlcoin-qt is great for people coming from [groestlcoin-core](https://github.com/groestlcoin/groestlcoin), which most of the C-Lightning users do (or have at least ever used groestlcoin-qt). Having it directly available from the RPC is also quite convenient.  
 
 ## How to install it ?
-For more informations about plugins and their installations you can checkout the [lightningd/plugins](https://github.com/lightningd/plugins) repository (which has a great list of plugins too). For a quick solution :  
-```shell
-git clone https://github.com/groestlcoin/pylightning-qt && cd pylightning-qt
+The easiest way is to install it with [bug](https://github.com/groestlcoin/bug) :-). If you have `lightningd` running with [the bug plugin](https://github.com/groestlcoin/bug) loaded you can install `lightning-qt` with :
+```bash
+lightning-cli install_plugin lightning-qt
+```
+Otherwise the traditional solution :  
+```bash
+git clone https://github.com/groestlcoin/lightning-qt && cd lightning-qt
 pip3 install -r requirements.txt
 chmod a+x lightning-qt.py
 # And just start lightningd like
 lightningd --plugin=lightning-qt.py
 ```
+You can also add `lightning-qt` directly in the default `plugins` directory so that it is automatically loaded on startup :
+```bash
+git clone https://github.com/groestlcoin/lightning-qt ~/.lightning/plugins/lightning-qt
+python3 -m pip install ~/.lightning/plugins/lightning-qt/requirements.txt
+chmod a+x ~/.lightning/plugins/lightning-qt/lightning-qt.py
+lightningd
+```
+Or you can even start it dynamically like (C-lightning v0.7.2 and above) :
+```bash
+git clone https://github.com/groestlcoin/lightning-qt && cd lightning-qt
+pip3 install -r requirements.txt
+chmod a+x lightning-qt.py
+# And just start lightningd like
+lightning-cli plugin start lightning-qt.py
+```
+For more informations about plugins and their installations you can checkout the [lightningd/plugins](https://github.com/lightningd/plugins) repository (which has a great list of plugins too).
 
 ## How to use it ?
 Just launch `lightning-cli gui` :D.  
